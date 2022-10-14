@@ -1,21 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { addBook, editBook } from '../features/books/booksSlice';
-import { v4 as uuidv4 } from 'uuid';
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { addBook, editBook } from "../features/books/booksSlice";
+import { v4 as uuidv4 } from "uuid";
 
 function BookForm() {
-
-
-
     const [book, setBook] = useState({
-        title: '',
-        author: '',
+        title: "",
+        author: "",
         yearOfPublication: "",
-        url:'',
-        description: '',
-        isbn:''
+        url: "",
+        description: "",
+        isbn: "",
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -42,7 +38,7 @@ function BookForm() {
             );
         }
 
-        navigate('/books-list');
+        navigate("/books-list");
     };
 
     useEffect(() => {
@@ -52,59 +48,63 @@ function BookForm() {
     }, [params, books]);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div className="container">
+            <form onSubmit={handleSubmit} className="form-container">
+                <label className="title-label">Title:</label>
+                <input
+                    className="form-input"
+                    type="text"
+                    name="title"
+                    onChange={handleChange}
+                    value={book.title}
+                    placeholder="Write a title"
+                    autoFocus
+                />
 
-            <label >Title:</label>
-            <input
-                type="text"
-                name="title"
-                onChange={handleChange}
-                value={book.title}
-                placeholder="Write a title"
-                autoFocus
-            />
+                <br />
 
-            <br/> 
+                <label className="title-label">Author: </label>
+                <input
+                    className="form-input"
+                    type="text"
+                    name="author"
+                    onChange={handleChange}
+                    value={book.author}
+                    placeholder="Write a author"
+                    autoFocus
+                />
 
-            <label>Author: </label>
-            <input
-                type="text"
-                name="author"
-                onChange={handleChange}
-                value={book.author}
-                placeholder="Write a author"
-                autoFocus
-            />
+                <br />
 
-            <br/> 
+                <label className="title-label">Edition Year: </label>
+                <input
+                    className="form-input"
+                    name="yearOfPublication"
+                    type="text"
+                    placeholder="1900"
+                    value={book.yearOfPublication}
+                    onChange={handleChange}
+                    autoFocus
+                />
 
-            <label>Edition Year: </label>
-            <input
-            name="yearOfPublication" 
-            type="text" 
-            placeholder="1900"
-            value={book.yearOfPublication}
-            onChange={handleChange}
-            autoFocus
-            />
-        
-            <br/> 
+                <br />
 
-            <label>Source Image: </label>
-            <input
-            name="url" 
-            type="text" 
-            value={book.url}
-            placeholder="https://www.image.com/image.png"
-            onChange={handleChange}
-            autoFocus
-            />
+                <label className="title-label">Source Image: </label>
+                <input
+                    className="form-input"
+                    name="url"
+                    type="text"
+                    value={book.url}
+                    placeholder="https://www.image.com/image.png"
+                    onChange={handleChange}
+                    autoFocus
+                />
 
-            <br/>
+                <br />
 
-            <label>
-                Description:
+                <label className="title-label">Description:</label>
                 <textarea
+                    className="form-textarea"
                     type="text"
                     name="description"
                     onChange={handleChange}
@@ -112,26 +112,27 @@ function BookForm() {
                     placeholder="Write a description"
                     autoFocus
                 />
-            </label>
 
-            <br/>
+                <br />
 
-            <label>ISBN: </label>
-            <input
-            name="isbn" 
-            type="text" 
-            placeholder="Optional"
-            value={book.isbn}
-            onChange={handleChange}
-            autoFocus
-            />
+                <label className="title-label">ISBN: </label>
+                <input
+                    className="form-input"
+                    name="isbn"
+                    type="text"
+                    placeholder="Optional"
+                    value={book.isbn}
+                    onChange={handleChange}
+                    autoFocus
+                />
 
-            <br />
+                <br />
 
-            <button type="submit">Save</button>
-            
-        </form>
-
+                <button type="submit" className="btn-save">
+                    Save
+                </button>
+            </form>
+        </div>
     );
 }
 

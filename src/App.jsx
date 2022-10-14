@@ -1,17 +1,16 @@
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link } from "react-router-dom";
 //components
-import BooksList from './components/BooksList';
-import BookForm from './components/BookForm';
-import Home from './components/Home';
-import Details from './components/Details';
+import BooksList from "./components/BooksList";
+import BookForm from "./components/BookForm";
+import Home from "./components/Home";
+import Details from "./components/Details";
+import Register from "./components/Register";
 
 
 
 function NotFound() {
-
-	
 	return (
-		<div>
+		<div className="n-f">
 			<h1>Not Found</h1>
 			<Link to="/">Go Back Home</Link>
 		</div>
@@ -19,13 +18,11 @@ function NotFound() {
 }
 
 function App() {
-
-
 	return (
-		<div className="container-fluid">
-			<header className="headings">
+		<div className="">
+			<div className="">
 				<nav>
-					<ul>
+					<ul className="ul-nav">
 						<li>
 							<Link to="/">Home</Link>
 						</li>
@@ -35,21 +32,27 @@ function App() {
 						<li>
 							<Link to="/create-book">Add Book</Link>
 						</li>
+						<img className="logo" src="../image/child-reading-book_icon-icons.com_49243.png" alt="logo" />
 					</ul>
+
 				</nav>
-				<h1 className='title-primary'>Book Gallery</h1>
-			</header>
+				<p>
+					<span>Book Gallery</span>
+				</p>
+
+			</div>
 			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/books-list' element={<BooksList />} />
-				<Route path='/create-book' element={<BookForm />} />
-				<Route path='/detail-book/:id' element={<Details />} />
-				<Route path='/update-book/:id' element={<BookForm />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/books-list" element={<BooksList />} />
+				<Route path="/create-book" element={<BookForm />} />
+				<Route path="/detail-book/:id" element={<Details />} />
+				<Route path="/update-book/:id" element={<BookForm />} />
+				<Route path="/register" element={<Register />} />
+
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</div>
 	);
-	
 }
 
 export default App;

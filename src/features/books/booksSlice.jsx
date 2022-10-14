@@ -24,7 +24,7 @@ const initialState = [
         title: "Harry Potter y la piedra filosofal",
         author: "J.K. Rowling",
         yearOfPublication: "1997",
-        url: "https://contentv2.tap-commerce.com/cover/large/9789878000107_1.jpg?id_com=1113",
+        url: "https://cdn.joinnus.com/file_fil/estruendo/9788498387094.png",
         description: "Harry Potter and the Philosopher's Stone is the first volume in the now classic series of fantasy novels by British author J.K. Rowling.Harry Potter has been orphaned and lives in the house of his abominable uncles and the insufferable cousin Dudley. He feels very sad and lonely, until one fine day he receives a letter that will change his life forever. In it they inform him that he has been accepted as a student at the Hogwarts Boarding School of Witchcraft and Wizardry. From that moment on, Harry's luck takes a spectacular turn. In that very special school he will learn charms, fabulous tricks and defense tactics against evil arts. He will become the school champion of quidditch, a kind of air football played on broomsticks, and will make a handful of good friends... but also some fearsome enemies. But, above all, he will learn the secrets that will allow him to fulfill his destiny. Well, although he may not seem like it at first glance, Harry is not an ordinary boy. He is a true magician!",
         isbn: "9789878000107"
     },
