@@ -1,139 +1,285 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { addBook, editBook } from "../features/books/booksSlice";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHref, useNavigate, useParams } from 'react-router-dom'
+import { v4 as uuid } from 'uuid'
+import { createBook, updateBook } from '../features/books/booksSlice'
+import { toast } from 'react-toastify'
 
-function BookForm() {
-    const [book, setBook] = useState({
-        title: "",
-        author: "",
-        yearOfPublication: "",
-        url: "",
-        description: "",
-        isbn: "",
-    });
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const params = useParams();
-    const books = useSelector((state) => state.books);
+const BookForm = () => {
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm()
 
-    const handleChange = (e) => {
-        setBook({
-            ...book,
-            [e.target.name]: e.target.value,
-        });
-    };
+	const href = useHref()
+	const { id } = useParams()
+	const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (params.id) {
-            dispatch(editBook({ ...book, id: params.id }));
-        } else {
-            dispatch(
-                addBook({
-                    ...book,
-                    id: uuidv4(),
-                })
-            );
-        }
+	const dispatch = useDispatch()
 
-        navigate("/books-list");
-    };
+	const books = useSelector(state => state.books)
 
-    useEffect(() => {
-        if (params.id) {
-            setBook(books.find((book) => book.id === params.id));
-        }
-    }, [params, books]);
+	useEffect(() => {
+		if (href === `/update-book/${id}`) {
+			const book = books.find(book => book.id === id)
 
-    return (
-        <div className="container">
-            <form onSubmit={handleSubmit} className="form-container">
-                <label className="title-label">Title:</label>
-                <input
-                    className="form-input"
-                    type="text"
-                    name="title"
-                    onChange={handleChange}
-                    value={book.title}
-                    placeholder="Write a title"
-                    autoFocus
-                />
+			reset({
+				title: book.title,
+				author: book.author,
+				published: book.published,
+				img: book.img,
+				description: book.description,
+				isbn: book.isbn,
+			})
+		} else {
+			reset({
+				title: '',
+				author: '',
+				published: '',
+				img: '',
+				description: '',
+				isbn: '',
+			})
+		}
+	}, [reset, href, books, id])
 
-                <br />
+	const onSubmit = data => {
+		if (href === `/update-book/${id}`) {
+			const changeBook = {
+				id,
+				...data,
+			}
 
-                <label className="title-label">Author: </label>
-                <input
-                    className="form-input"
-                    type="text"
-                    name="author"
-                    onChange={handleChange}
-                    value={book.author}
-                    placeholder="Write a author"
-                    autoFocus
-                />
+			dispatch(updateBook(changeBook))
 
-                <br />
+			navigate(`/book/${id}`)
+		} else {
+			const newBook = {
+				id: uuid(),
+				...data,
+			}
 
-                <label className="title-label">Edition Year: </label>
-                <input
-                    className="form-input"
-                    name="yearOfPublication"
-                    type="text"
-                    placeholder="1900"
-                    value={book.yearOfPublication}
-                    onChange={handleChange}
-                    autoFocus
-                />
+			dispatch(createBook(newBook))
 
-                <br />
+			navigate('/books')
+		}
+	}
 
-                <label className="title-label">Source Image: </label>
-                <input
-                    className="form-input"
-                    name="url"
-                    type="text"
-                    value={book.url}
-                    placeholder="https://www.image.com/image.png"
-                    onChange={handleChange}
-                    autoFocus
-                />
+	return (
+		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="px-4 sm:px-0 text-center">
+				<h3 className="text-xl font-medium leading-6 text-gray-900">
+					{href === `/update-book/${id}` ? 'Update book' : 'Add book'}
+				</h3>
+				<p className="mt-1 text-sm text-gray-600">
+					{href === `/update-book/${id}`
+						? 'Update your favorite book ;)'
+						: 'Add your favorite book ;)'}
+				</p>
+			</div>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className="mt-6 mx-auto max-w-lg"
+			>
+				<div className="flex flex-col gap-4">
+					<div className="flex flex-col">
+						<label
+							htmlFor="title"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Title
+						</label>
+						<input
+							id="title"
+							type="text"
+							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('title', {
+								required: true,
+							})}
+						/>
+						<div
+							className={`${
+								errors.title ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.title?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Title is required
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col">
+						<label
+							htmlFor="author"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Author
+						</label>
+						<input
+							id="author"
+							type="text"
+							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('author', {
+								required: true,
+							})}
+						/>
+						<div
+							className={`${
+								errors.author ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.author?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Author is required
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col">
+						<label
+							htmlFor="published"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Published
+						</label>
+						<input
+							id="published"
+							type="date"
+							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('published', {
+								required: 'Published is required',
+							})}
+						/>
+						<div
+							className={`${
+								errors.published ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.published?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Published is required
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col ">
+						<label
+							htmlFor="isbn"
+							className="block text-sm font-medium text-gray-700"
+						>
+							ISBN
+						</label>
+						<input
+							id="isbn"
+							type="text"
+							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('isbn', {
+								required: true,
+							})}
+						/>
+						<div
+							className={`${
+								errors.isbn ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.isbn?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									ISBN is required
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col">
+						<label
+							htmlFor="img"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Image
+						</label>
+						<input
+							id="img"
+							type="text"
+							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('img', {
+								required: true,
+								pattern:
+									/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i,
+							})}
+						/>
+						<div
+							className={`${
+								errors.img ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.img?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Image is required
+								</p>
+							)}
+							{errors.img?.type === 'pattern' && (
+								<p className="text-xs absolute text-red-500">
+									Image has to be a url
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col">
+						<label
+							htmlFor="description"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Description
+						</label>
+						<textarea
+							id="description"
+							rows={3}
+							className="resize-none mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							{...register('description', {
+								required: 'Description is required',
+							})}
+						/>
+						<div
+							className={`${
+								errors.description ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.description?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Description is required
+								</p>
+							)}
+						</div>
+					</div>
 
-                <br />
+					<input
+						type="submit"
+						value={
+							href === `/update-book/${id}`
+								? 'Update book'
+								: 'Create book'
+						}
+						className="cursor-pointer self-center inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+					/>
 
-                <label className="title-label">Description:</label>
-                <textarea
-                    className="form-textarea"
-                    type="text"
-                    name="description"
-                    onChange={handleChange}
-                    value={book.description}
-                    placeholder="Write a description"
-                    autoFocus
-                />
-
-                <br />
-
-                <label className="title-label">ISBN: </label>
-                <input
-                    className="form-input"
-                    name="isbn"
-                    type="text"
-                    placeholder="Optional"
-                    value={book.isbn}
-                    onChange={handleChange}
-                    autoFocus
-                />
-
-                <br />
-
-                <button type="submit" className="btn-save">
-                    Save
-                </button>
-            </form>
-        </div>
-    );
+					<div
+						className={`${
+							Object.keys(errors).length > 0
+								? 'visible'
+								: 'invisible'
+						}`}
+					>
+						<p className="text-sm text-center text-red-500">
+							There are errors, check form.
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	)
 }
 
-export default BookForm;
+export default BookForm

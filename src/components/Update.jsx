@@ -1,76 +1,61 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams } from 'react-router-dom'
 
 const Update = () => {
-    const { id } = useParams();
-    return(
-        
-        <div className=''>
-            Update (TEST)
-            <form >
-            
-            <label>Title: </label>
-            <input
-            name="title" 
-            type="text" 
-            placeholder="Write"
-            />
+	const { id } = useParams()
+	return (
+		<div className="">
+			Update (TEST)
+			<form>
+				<label>Title: </label>
+				<input name="title" type="text" placeholder="Write" />
 
-            <br/> 
+				<br />
 
-            <label>Author: </label>
-            <input 
-            name="author"
-            type="text" 
-            placeholder="Write"
-            />
-            
-            <br/> 
+				<label>Author: </label>
+				<input name="author" type="text" placeholder="Write" />
 
-            <label>Edition Year: </label>
-            <input
-            name="yearOfPublication" 
-            type="text" 
-            placeholder="1995"
-            />
+				<br />
 
-            <br/>
-            
+				<label>Edition Year: </label>
+				<input
+					name="yearOfPublication"
+					type="text"
+					placeholder="1995"
+				/>
 
-            <label>Source Image: </label>
-            <input
-            name="url" 
-            type="text" 
-            placeholder="https://www.yourimage.com/image.png"
-            />
+				<br />
 
-            <br/>
+				<label>Source Image: </label>
+				<input
+					name="url"
+					type="text"
+					placeholder="https://www.yourimage.com/image.png"
+				/>
 
-            <label>Description: </label>
-            <textarea
-            name="description" 
-            type="text" 
-            placeholder="Description..."
-            />
+				<br />
 
-            <br/> 
+				<label>Description: </label>
+				<textarea
+					name="description"
+					type="text"
+					placeholder="Description..."
+				/>
 
-            <label>ISBN: </label>
-            <input
-            name="isbn" 
-            type="text" 
-            placeholder="Optional"
-            />
+				<br />
 
-            <br/>
+				<label>ISBN: </label>
+				<input name="isbn" type="text" placeholder="Optional" />
 
-            
-
-        </form>
-            <Link to={`/`}><button className="btn-xxl">Accept</button></Link>
-            <Link to={`/detail-book/${id}`}><button className="btn-xxl">Cancel</button></Link>
-        </div>
-        
-    )
+				<br />
+			</form>
+			<Link to={`/`}>
+				<button className="btn-xxl">Accept</button>
+			</Link>
+			<Link to={`/detail-book/${id}`}>
+				<button className="btn-xxl">Cancel</button>
+			</Link>
+		</div>
+	)
 }
 
-export default Update;
+export default Update

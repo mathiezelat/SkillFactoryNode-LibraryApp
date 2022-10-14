@@ -1,36 +1,24 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import '../styles/index.css';
+import { useSelector } from 'react-redux'
+import BookCard from './BookCard'
 
-function BooksList() {
-  const books = useSelector((state) => state.books);
+const BookList = () => {
+	const books = useSelector(state => state.books)
 
-  return (
-    <div className="">
-      <div className="count-number">
-        <h3 className="count">Books: {books.length}</h3>
-      </div>
-      {books.map((book) => {
-        return (
-          <div className="">
-            <div className="card-book">
-              <div key={book.id}>
-                <h2>{book.title}</h2>
-                <h3>{book.author}</h3>
-                <div className="image">
-                  <img src={book.url} alt="imag-card" />
-                </div>
-
-                <Link className="btn-detail" to={`/detail-book/${book.id}`}>
-                  Details
-                </Link>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+	return (
+		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="my-6 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+				{books.map(book => (
+					<BookCard
+						key={book.id}
+						id={book.id}
+						title={book.title}
+						author={book.author}
+						img={book.img}
+					/>
+				))}
+			</div>
+		</div>
+	)
 }
 
-export default BooksList;
+export default BookList
