@@ -84,6 +84,7 @@ const NavBar = () => {
 										<NavLink
 											to="/login"
 											className="-m-2 block p-2 font-medium text-gray-900"
+											onClick={() => setOpen(false)}
 										>
 											Log in
 										</NavLink>
@@ -92,6 +93,7 @@ const NavBar = () => {
 										<NavLink
 											to="/signup"
 											className="-m-2 block p-2 font-medium text-gray-900"
+											onClick={() => setOpen(false)}
 										>
 											Sign up
 										</NavLink>
