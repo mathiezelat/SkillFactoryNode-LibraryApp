@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHref, useNavigate, useParams } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
-import { createBook, updateBook } from '../features/books/booksSlice'
 import { toast } from 'react-toastify'
+import { createBook, updateBook } from '../features/books/booksSlice'
 
 const BookForm = () => {
 	const {
@@ -55,6 +55,8 @@ const BookForm = () => {
 
 			dispatch(updateBook(changeBook))
 
+			toast('Updated book!', { type: 'success' })
+
 			navigate(`/book/${id}`)
 		} else {
 			const newBook = {
@@ -63,6 +65,8 @@ const BookForm = () => {
 			}
 
 			dispatch(createBook(newBook))
+
+			toast('Added book!', { type: 'success' })
 
 			navigate('/books')
 		}

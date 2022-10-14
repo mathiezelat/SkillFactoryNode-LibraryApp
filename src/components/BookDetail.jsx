@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { deleteBook } from '../features/books/booksSlice'
 
 const BookView = () => {
@@ -17,6 +18,8 @@ const BookView = () => {
 
 	const handleDeleteBook = () => {
 		dispatch(deleteBook(id))
+
+		toast('Deleted book!', { type: 'success' })
 
 		navigate('/books')
 	}

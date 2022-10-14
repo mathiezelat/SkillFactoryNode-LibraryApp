@@ -1,12 +1,16 @@
 import { Route, Routes } from 'react-router-dom'
-import BooksList from './components/BooksList'
-import BookForm from './components/BookForm'
-import Home from './components/Home'
+import { ToastContainer } from 'react-toastify'
+
 import BookDetail from './components/BookDetail'
+import BookForm from './components/BookForm'
+import BooksList from './components/BooksList'
+import Home from './components/Home'
 import LogIn from './components/LogIn'
-import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
 import NotFound from './components/NotFound'
+import SignUp from './components/SignUp'
+
+import 'react-toastify/ReactToastify.min.css'
 
 function App() {
 	return (
@@ -23,6 +27,7 @@ function App() {
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>
+			<ToastContainer position="bottom-right" newestOnTop />
 		</div>
 	)
 }
