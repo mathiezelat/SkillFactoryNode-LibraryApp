@@ -1,58 +1,35 @@
-import { Route, Routes, Link } from "react-router-dom";
-//components
-import BooksList from "./components/BooksList";
-import BookForm from "./components/BookForm";
-import Home from "./components/Home";
-import Details from "./components/Details";
-import Register from "./components/Register";
+import { Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
+import BookDetail from './components/BookDetail'
+import BookForm from './components/BookForm'
+import BooksList from './components/BooksList'
+import Home from './components/Home'
+import LogIn from './components/LogIn'
+import NavBar from './components/NavBar'
+import NotFound from './components/NotFound'
+import SignUp from './components/SignUp'
 
-
-function NotFound() {
-	return (
-		<div className="n-f">
-			<h1>Not Found</h1>
-			<Link to="/">Go Back Home</Link>
-		</div>
-	);
-}
+import 'react-toastify/ReactToastify.min.css'
 
 function App() {
 	return (
-		<div className="">
-			<div className="">
-				<nav>
-					<ul className="ul-nav">
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/books-list">Books List</Link>
-						</li>
-						<li>
-							<Link to="/create-book">Add Book</Link>
-						</li>
-						{/* <img className="logo" src="../image/child-reading-book_icon-icons.com_49243.png" alt="logo" /> */}
-					</ul>
-
-				</nav>
-				<p>
-					<span>Book Gallery</span>
-				</p>
-
-			</div>
+		<div>
+			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/books-list" element={<BooksList />} />
+				<Route path="/books" element={<BooksList />} />
 				<Route path="/create-book" element={<BookForm />} />
-				<Route path="/detail-book/:id" element={<Details />} />
+				<Route path="/book/:id" element={<BookDetail />} />
 				<Route path="/update-book/:id" element={<BookForm />} />
-				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<LogIn />} />
+				<Route path="/signup" element={<SignUp />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>
+			<ToastContainer position="bottom-right" newestOnTop />
 		</div>
-	);
+	)
 }
 
-export default App;
+export default App
