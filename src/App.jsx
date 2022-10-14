@@ -32,7 +32,7 @@ function App() {
 						<li>
 							<Link to="/create-book">Add Book</Link>
 						</li>
-						<img className="logo" src="../image/child-reading-book_icon-icons.com_49243.png" alt="logo" />
+						{/* <img className="logo" src="../image/child-reading-book_icon-icons.com_49243.png" alt="logo" /> */}
 					</ul>
 
 				</nav>

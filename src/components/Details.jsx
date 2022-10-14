@@ -7,6 +7,7 @@ function Details() {
     const dispatch = useDispatch();
     const handleDelete = (id) => {
         dispatch(deleteBook(id));
+        
     };
     return (
         <div className="">

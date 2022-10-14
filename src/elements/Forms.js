@@ -116,9 +116,9 @@ const CenteredButtonContainer = styled.div`
     align-items: center;
     grid-column: span 2;
 
-    /* @media (max-width: 800px){
+    @media (max-width: 800px){
         grid-column: span 1;
-    } */
+    }
 `;
 
 const Button = styled.button`
@@ -136,6 +136,10 @@ const Button = styled.button`
 
     &:hover {
         box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+    }
+
+    @media (max-width: 600px){
+        grid-column: span 1;
     }
 `;
 
