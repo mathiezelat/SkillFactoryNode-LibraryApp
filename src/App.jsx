@@ -10,11 +10,15 @@ import NavBar from './components/NavBar'
 import NotFound from './components/NotFound'
 import SignUp from './components/SignUp'
 
+
 import 'react-toastify/ReactToastify.min.css'
 
 function App() {
+
+
 	return (
-		<div>
+		<div >
+
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -28,7 +32,8 @@ function App() {
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<ToastContainer position="bottom-right" newestOnTop />
-		</div>
+			
+		</div >
 	)
 }
 
