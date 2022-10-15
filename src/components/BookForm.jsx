@@ -80,12 +80,14 @@ const BookForm = () => {
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div className="py-6 px-4 sm:px-0 text-center">
 				<h3 className="text-3xl font-medium leading-6 text-gray-900">
-					{href === `/update-book/${id}` ? 'Update book' : 'Add book'}
+					{href === `/update-book/${id}`
+						? 'Update book'
+						: 'Create book'}
 				</h3>
 				<p className="mt-1 text-lg text-gray-600">
 					{href === `/update-book/${id}`
 						? 'Update your favorite book ;)'
-						: 'Add your favorite book ;)'}
+						: 'Create your favorite book ;)'}
 				</p>
 			</div>
 			<form
