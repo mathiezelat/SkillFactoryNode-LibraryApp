@@ -103,7 +103,7 @@ const BookForm = () => {
 						<input
 							id="title"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('title', {
 								required: true,
 							})}
@@ -130,7 +130,7 @@ const BookForm = () => {
 						<input
 							id="author"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('author', {
 								required: true,
 							})}
@@ -157,7 +157,7 @@ const BookForm = () => {
 						<input
 							id="published"
 							type="date"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('published', {
 								required: 'Published is required',
 							})}
@@ -184,7 +184,7 @@ const BookForm = () => {
 						<input
 							id="isbn"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('isbn', {
 								required: true,
 							})}
@@ -211,7 +211,7 @@ const BookForm = () => {
 						<input
 							id="img"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('img', {
 								required: true,
 								pattern:
@@ -245,7 +245,7 @@ const BookForm = () => {
 						<textarea
 							id="description"
 							rows={3}
-							className="resize-none mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="resize-none mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('description', {
 								required: 'Description is required',
 							})}
