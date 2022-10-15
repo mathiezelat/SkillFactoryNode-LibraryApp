@@ -26,14 +26,18 @@ const BookForm = () => {
 		if (href === `/update-book/${id}`) {
 			const book = books.find(book => book.id === id)
 
-			reset({
-				title: book.title,
-				author: book.author,
-				published: book.published,
-				img: book.img,
-				description: book.description,
-				isbn: book.isbn,
-			})
+			if (book) {
+				reset({
+					title: book.title,
+					author: book.author,
+					published: book.published,
+					img: book.img,
+					description: book.description,
+					isbn: book.isbn,
+				})
+			} else {
+				navigate('/create-book')
+			}
 		} else {
 			reset({
 				title: '',
@@ -44,7 +48,7 @@ const BookForm = () => {
 				isbn: '',
 			})
 		}
-	}, [reset, href, books, id])
+	}, [reset, href, books, id, navigate])
 
 	const onSubmit = data => {
 		if (href === `/update-book/${id}`) {
@@ -74,19 +78,21 @@ const BookForm = () => {
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div className="px-4 sm:px-0 text-center">
-				<h3 className="text-xl font-medium leading-6 text-gray-900">
-					{href === `/update-book/${id}` ? 'Update book' : 'Add book'}
+			<div className="py-6 px-4 sm:px-0 text-center">
+				<h3 className="text-3xl font-medium leading-6 text-gray-900">
+					{href === `/update-book/${id}`
+						? 'Update book'
+						: 'Create book'}
 				</h3>
-				<p className="mt-1 text-sm text-gray-600">
+				<p className="mt-1 text-lg text-gray-600">
 					{href === `/update-book/${id}`
 						? 'Update your favorite book ;)'
-						: 'Add your favorite book ;)'}
+						: 'Create your favorite book ;)'}
 				</p>
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="mt-6 mx-auto max-w-lg"
+				className="py-2 mx-auto max-w-lg"
 			>
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col">
@@ -99,7 +105,7 @@ const BookForm = () => {
 						<input
 							id="title"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('title', {
 								required: true,
 							})}
@@ -126,7 +132,7 @@ const BookForm = () => {
 						<input
 							id="author"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('author', {
 								required: true,
 							})}
@@ -153,7 +159,7 @@ const BookForm = () => {
 						<input
 							id="published"
 							type="date"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('published', {
 								required: 'Published is required',
 							})}
@@ -180,7 +186,7 @@ const BookForm = () => {
 						<input
 							id="isbn"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('isbn', {
 								required: true,
 							})}
@@ -207,7 +213,7 @@ const BookForm = () => {
 						<input
 							id="img"
 							type="text"
-							className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('img', {
 								required: true,
 								pattern:
@@ -241,7 +247,7 @@ const BookForm = () => {
 						<textarea
 							id="description"
 							rows={3}
-							className="resize-none mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+							className="resize-none mt-1 block w-full rounded-md border-gray-300  focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('description', {
 								required: 'Description is required',
 							})}
@@ -266,7 +272,7 @@ const BookForm = () => {
 								? 'Update book'
 								: 'Create book'
 						}
-						className="cursor-pointer self-center inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						className="cursor-pointer self-center inline-flex justify-center rounded-lg border border-transparent bg-blue-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:blue-indigo-500 focus:ring-offset-2"
 					/>
 
 					<div
