@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { deleteBook } from '../features/books/booksSlice'
 import NotFound from './NotFound'
+import BookModalDelete from './BookModalDelete'
 
 const BookView = () => {
+	const [open, setOpen] = useState(false)
+
 	const { id } = useParams()
 
 	const navigate = useNavigate()
@@ -29,6 +33,11 @@ const BookView = () => {
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<BookModalDelete
+				open={open}
+				setOpen={setOpen}
+				handleDeleteBook={handleDeleteBook}
+			/>
 			<div className="my-6 grid grid-cols-12 gap-6">
 				<div className="col-span-12 md:col-span-6 lg:col-span-4">
 					<img
@@ -62,7 +71,7 @@ const BookView = () => {
 						<div className="flex gap-2">
 							<button
 								className="rounded-md border border-transparent bg-red-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-								onClick={handleDeleteBook}
+								onClick={() => setOpen(true)}
 							>
 								Delete
 							</button>
