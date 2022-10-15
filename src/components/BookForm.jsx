@@ -26,14 +26,18 @@ const BookForm = () => {
 		if (href === `/update-book/${id}`) {
 			const book = books.find(book => book.id === id)
 
-			reset({
-				title: book.title,
-				author: book.author,
-				published: book.published,
-				img: book.img,
-				description: book.description,
-				isbn: book.isbn,
-			})
+			if (book) {
+				reset({
+					title: book.title,
+					author: book.author,
+					published: book.published,
+					img: book.img,
+					description: book.description,
+					isbn: book.isbn,
+				})
+			} else {
+				navigate('/create-book')
+			}
 		} else {
 			reset({
 				title: '',
@@ -44,7 +48,7 @@ const BookForm = () => {
 				isbn: '',
 			})
 		}
-	}, [reset, href, books, id])
+	}, [reset, href, books, id, navigate])
 
 	const onSubmit = data => {
 		if (href === `/update-book/${id}`) {
@@ -74,11 +78,11 @@ const BookForm = () => {
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div className="px-4 sm:px-0 text-center">
-				<h3 className="text-xl font-medium leading-6 text-gray-900">
+			<div className="py-6 px-4 sm:px-0 text-center">
+				<h3 className="text-3xl font-medium leading-6 text-gray-900">
 					{href === `/update-book/${id}` ? 'Update book' : 'Add book'}
 				</h3>
-				<p className="mt-1 text-sm text-gray-600">
+				<p className="mt-1 text-lg text-gray-600">
 					{href === `/update-book/${id}`
 						? 'Update your favorite book ;)'
 						: 'Add your favorite book ;)'}
@@ -86,7 +90,7 @@ const BookForm = () => {
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="mt-6 mx-auto max-w-lg"
+				className="py-2 mx-auto max-w-lg"
 			>
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col">
@@ -266,7 +270,7 @@ const BookForm = () => {
 								? 'Update book'
 								: 'Create book'
 						}
-						className="cursor-pointer self-center inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						className="cursor-pointer self-center inline-flex justify-center rounded-lg border border-transparent bg-blue-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:blue-indigo-500 focus:ring-offset-2"
 					/>
 
 					<div
