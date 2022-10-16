@@ -3,6 +3,8 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import SvgBooks from '../assets/illustrations/SvgBooks'
 
 function Home() {
+
+
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative overflow-hidden">
 			<div className="flex flex-col justify-center items-center pt-20 ">
@@ -34,5 +36,6 @@ function Home() {
 		</div>
 	)
 }
+
 
 export default Home
