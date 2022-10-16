@@ -18,7 +18,7 @@ function App() {
 
 	return (
 		<div >
-
+		
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -32,7 +32,7 @@ function App() {
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<ToastContainer position="bottom-right" newestOnTop />
-			
+
 		</div >
 	)
 }
