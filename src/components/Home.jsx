@@ -14,7 +14,7 @@ function Home() {
 						<p className="mt-2 text-slate-600">
 							Library of your dreams
 						</p>
-						<div className="mt-4 text-center flex flex-col md:flex-row justify-center items-center gap-2">
+						<div className="mt-4 text-center flex flex-col justify-center items-center gap-2">
 							<p className="text-sm text-slate-600">
 								What are you waiting for to get into the
 								adventure of books?
