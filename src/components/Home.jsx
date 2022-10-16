@@ -7,14 +7,14 @@ function Home() {
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative overflow-hidden">
 			<div className="flex flex-col justify-center items-center pt-20 ">
 				<div>
-					<div className="absolute left-0 right-0 px-4 flex flex-col justify-center items-center">
+					<div className="absolute left-0 right-0 px-8 md:px-4 flex flex-col justify-center items-center">
 						<h1 className="text-slate-900 font-semibold text-4xl tracking-tight">
 							Library App
 						</h1>
 						<p className="mt-2 text-slate-600">
 							Library of your dreams
 						</p>
-						<div className="mt-4 flex flex-col md:flex-row justify-center items-center gap-2">
+						<div className="mt-4 text-center flex flex-col md:flex-row justify-center items-center gap-2">
 							<p className="text-sm text-slate-600">
 								What are you waiting for to get into the
 								adventure of books?
