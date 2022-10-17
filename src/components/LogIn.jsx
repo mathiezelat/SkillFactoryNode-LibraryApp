@@ -1,87 +1,134 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Input from './ComponentInput.js'
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
-import {
-	Form,
-	CenteredButtonContainer,
-	Button,
-	SuccessMessage,
-	ErrorMessage,
-} from '../elements/Forms'
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 const LogIn = () => {
-	const [usuario, cambiarUsuario] = useState({ campo: '', valido: null })
-	const [password, cambiarPassword] = useState({ campo: '', valido: null })
-	const [correo, cambiarCorreo] = useState({ campo: '', valido: null })
-	const [formValido, cambiarFormValido] = useState(null)
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm()
 
-	const exprersiones = {
-		usuario: /^[a-zA-Z0-9_-]{4,16}$/, //letras, numeros, guion, guion_bajo.
-		password: /^.{4,12}$/, //4 a 12 digitos.
-		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	}
+	const onSubmit = data => {
+		console.log(data)
 
-	const onSubmit = e => {
-		e.preventDefault()
-
-		if (
-			usuario.valido === 'true' &&
-			password.valido === 'true' &&
-			correo.valido === 'true'
-		) {
-			cambiarFormValido(true)
-			cambiarUsuario({ campo: '', valido: '' }) //reiniciamos los valores - formulario a vacio
-			cambiarPassword({ campo: '', valido: null }) //reiniciamos los valores - formulario a vacio
-			cambiarCorreo({ campo: '', valido: null }) //reiniciamos los valores - formulario a vacio
-		} else {
-			cambiarFormValido(false)
-		}
+		reset()
 	}
 
 	return (
-		<main className="contac">
-			<Form action="" onSubmit={onSubmit}>
-				<Input
-					estado={password}
-					cambiarEstado={cambiarPassword}
-					type="password"
-					label="Password"
-					name="password 1"
-					placeholder="***********"
-					legendError="The password must contain from 4 to 12 digits."
-					regularPhrase={exprersiones.password}
-				/>
+		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="py-6 px-4 sm:px-0 text-center">
+				<h3 className="text-3xl font-medium leading-6 text-gray-900">
+					Log in
+				</h3>
+				<p className="mt-1 text-lg text-gray-600">
+					Log in to your favorite page ;)
+				</p>
+			</div>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className="py-2 mx-auto max-w-lg"
+			>
+				<div className="flex flex-col gap-4">
+					<div className="flex flex-col">
+						<label
+							htmlFor="email"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Email
+						</label>
+						<input
+							id="email"
+							type="email"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+							{...register('email', {
+								required: true,
+								pattern: /\S+@\S+\.\S+/,
+							})}
+						/>
+						<div
+							className={`${
+								errors.email ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.email?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Email is required
+								</p>
+							)}
+							{errors.email?.type === 'pattern' && (
+								<p className="text-xs absolute text-red-500">
+									Entered value does not match email format
+								</p>
+							)}
+						</div>
+					</div>
+					<div className="flex flex-col">
+						<label
+							htmlFor="password"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Password
+						</label>
+						<input
+							id="password"
+							type="password"
+							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+							{...register('password', {
+								required: true,
+								minLength: 8,
+							})}
+						/>
+						<div
+							className={`${
+								errors.password ? 'visible' : 'invisible'
+							}`}
+						>
+							{errors.password?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									Password is required
+								</p>
+							)}
+							{errors.password?.type === 'minLength' && (
+								<p className="text-xs absolute text-red-500">
+									Password must contain more than 8 digits
+								</p>
+							)}
+						</div>
+					</div>
 
-				<Input
-					estado={correo}
-					cambiarEstado={cambiarCorreo}
-					type="email"
-					label="Email"
-					placeholder="john_Doe@gmail.com"
-					name="correo"
-					legendError="Email can only contain letters, numbers, periods, hyphens and underscores."
-					regularPhrase={exprersiones.correo}
-				/>
+					<input
+						type="submit"
+						value="Log in"
+						className="cursor-pointer self-center inline-flex justify-center rounded-lg border border-transparent bg-blue-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:blue-indigo-500 focus:ring-offset-2"
+					/>
 
-				{formValido === false && (
-					<ErrorMessage>
-						<p>
-							<FontAwesomeIcon icon={faExclamationTriangle} />
-							<b>Error:</b> Please fill in this field is required.
+					<div className="flex justify-center items-center gap-1">
+						<p className="text-sm text-gray-700">
+							Don't have an account?
 						</p>
-					</ErrorMessage>
-				)}
-				<CenteredButtonContainer>
-					<Button type="submit">Send</Button>
-					{formValido === true && (
-						<SuccessMessage>
-							The form was sent successfully!
-						</SuccessMessage>
-					)}
-				</CenteredButtonContainer>
-			</Form>
-		</main>
+						<Link
+							to="/signup"
+							className="text-sm text-blue-500 hover:text-blue-400"
+						>
+							Sign up
+						</Link>
+					</div>
+
+					<div
+						className={`${
+							Object.keys(errors).length > 0
+								? 'visible'
+								: 'invisible'
+						}`}
+					>
+						<p className="text-sm text-center text-red-500">
+							There are errors, check form.
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
 	)
 }
 
