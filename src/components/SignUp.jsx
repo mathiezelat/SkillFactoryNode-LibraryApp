@@ -53,7 +53,7 @@ const SignUp = () => {
 						>
 							{errors.firstName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
-									First Name is required
+									First name is required
 								</p>
 							)}
 							{errors.firstName?.type === 'maxLength' && (
@@ -86,7 +86,7 @@ const SignUp = () => {
 						>
 							{errors.lastName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
-									Last Name Name is required
+									Last name is required
 								</p>
 							)}
 							{errors.lastName?.type === 'maxLength' && (
