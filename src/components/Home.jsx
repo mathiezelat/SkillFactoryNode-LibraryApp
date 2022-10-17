@@ -5,7 +5,7 @@ import SvgBooks from '../assets/illustrations/SvgBooks'
 function Home() {
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-			<div className="flex flex-col justify-center items-center pt-20 ">
+			<div className="flex flex-col justify-center items-center pt-20">
 				<div>
 					<div className="absolute left-0 right-0 px-8 md:px-4 flex flex-col justify-center items-center">
 						<h1 className="text-slate-900 font-semibold text-4xl tracking-tight">
