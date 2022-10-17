@@ -129,9 +129,9 @@ const CenteredButtonContainer = styled.div`
 	align-items: center;
 	grid-column: span 2;
 
-	@media (max-width: 800px){
-        grid-column: span 1;
-    }
+	@media (max-width: 800px) {
+		grid-column: span 1;
+	}
 `
 
 const Button = styled.button`

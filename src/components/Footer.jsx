@@ -22,7 +22,7 @@ const Footer = () => {
 								href={person.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-sm text-gray-600 hover:text-gray-900"
+								className="text-sm text-gray-600 hover:text-gray-700"
 							>
 								{person.name}
 							</a>

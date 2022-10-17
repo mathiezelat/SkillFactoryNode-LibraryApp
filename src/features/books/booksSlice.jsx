@@ -54,7 +54,8 @@ const initialState = [
 		title: 'Things Fall Apart',
 		author: 'Chinua Achebe',
 		img: 'https://afrikanconsciousnessbookstore.net/wp-content/uploads/2020/05/1590251452-600x553.png',
-		description: 'Things Fall Apart tells two overlapping, intertwining stories, both of which center around Okonkwo, a "strong man" of an Ibo village in Nigeria. The first story traces Okonkwo’s fall from grace with the tribal world in which he lives. It provides us with a powerful fable about the immemorial conflict between the individual society. The second story, which is as modern as the first is ancient, concerns the clash of cultures and the destruction of Okonkwo’s world through the arrival of aggressive, proselytizing European missionaries.',
+		description:
+			'Things Fall Apart tells two overlapping, intertwining stories, both of which center around Okonkwo, a "strong man" of an Ibo village in Nigeria. The first story traces Okonkwo’s fall from grace with the tribal world in which he lives. It provides us with a powerful fable about the immemorial conflict between the individual society. The second story, which is as modern as the first is ancient, concerns the clash of cultures and the destruction of Okonkwo’s world through the arrival of aggressive, proselytizing European missionaries.',
 		published: '1994',
 		isbn: '0385474547',
 	},
@@ -81,7 +82,8 @@ const initialState = [
 		title: 'Stranger Things: A Oscuras En La Ciudad',
 		author: 'Adam Christopher',
 		img: 'https://cdnx.jumpseller.com/que-leo-temuco/image/22574893/resize/540/540?1647377701',
-		description: 'Hawkins, 1984. Lo único que anhela el jefe Jim Hopper es disfrutar de una primera Navidad junto a Once, pero su hija adoptiva ha rescatado del sótano una caja que pone «Nueva York», con recuerdos de una época pasada. ¿Qué hacía él allí y por qué? ¿Qué significa «Vietnam»? Aunque Hopper preferiría hacer frente a una horda de Demogorgons que responder a sus preguntas, no tiene más remedio que hablar del verano de 1977. Después de regresar de Vietnam, se trasladó con su mujer y su hija a Nueva York, donde consiguió un trabajo en el departamento de policía. Cuando los agentes federales le arrebataron el caso sin resolver de una serie de asesinatos, se infiltró en las bandas callejeras de Nueva York para tratar de desvelar la verdad. Pero entonces un apagón se apoderó de la ciudad y precipitó a Hopper en la oscuridad más profunda a la que se hubiera enfrentado jamás.',
+		description:
+			'Hawkins, 1984. Lo único que anhela el jefe Jim Hopper es disfrutar de una primera Navidad junto a Once, pero su hija adoptiva ha rescatado del sótano una caja que pone «Nueva York», con recuerdos de una época pasada. ¿Qué hacía él allí y por qué? ¿Qué significa «Vietnam»? Aunque Hopper preferiría hacer frente a una horda de Demogorgons que responder a sus preguntas, no tiene más remedio que hablar del verano de 1977. Después de regresar de Vietnam, se trasladó con su mujer y su hija a Nueva York, donde consiguió un trabajo en el departamento de policía. Cuando los agentes federales le arrebataron el caso sin resolver de una serie de asesinatos, se infiltró en las bandas callejeras de Nueva York para tratar de desvelar la verdad. Pero entonces un apagón se apoderó de la ciudad y precipitó a Hopper en la oscuridad más profunda a la que se hubiera enfrentado jamás.',
 		published: '2019',
 		isbn: '9789566129141',
 	},

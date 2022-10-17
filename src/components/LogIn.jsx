@@ -22,16 +22,13 @@ const LogIn = () => {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	}
 
-
-
-
 	const onSubmit = e => {
 		e.preventDefault()
 
 		if (
 			usuario.valido === 'true' &&
 			password.valido === 'true' &&
-			correo.valido === 'true' 
+			correo.valido === 'true'
 		) {
 			cambiarFormValido(true)
 			cambiarUsuario({ campo: '', valido: '' }) //reiniciamos los valores - formulario a vacio
@@ -45,8 +42,6 @@ const LogIn = () => {
 	return (
 		<main className="contac">
 			<Form action="" onSubmit={onSubmit}>
-
-
 				<Input
 					estado={password}
 					cambiarEstado={cambiarPassword}
@@ -58,8 +53,6 @@ const LogIn = () => {
 					regularPhrase={exprersiones.password}
 				/>
 
-
-
 				<Input
 					estado={correo}
 					cambiarEstado={cambiarCorreo}
@@ -70,7 +63,6 @@ const LogIn = () => {
 					legendError="Email can only contain letters, numbers, periods, hyphens and underscores."
 					regularPhrase={exprersiones.correo}
 				/>
-
 
 				{formValido === false && (
 					<ErrorMessage>
