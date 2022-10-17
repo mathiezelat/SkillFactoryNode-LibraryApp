@@ -11,7 +11,7 @@ const NotFound = () => {
 						<h1 className="text-slate-900 font-semibold text-4xl tracking-tight">
 							Not found
 						</h1>
-						<p className="mt-2 text-slate-600">
+						<p className="mt-2 text-slate-600 text-center">
 							Sorry, the page you are looking for doesn't exist
 						</p>
 						<Link
