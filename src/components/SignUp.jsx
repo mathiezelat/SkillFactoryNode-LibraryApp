@@ -83,6 +83,21 @@ const SignUp = () => {
 								maxLength: 10,
 							})}
 						/>
+											<div
+						className={`${errors.lastName ? 'visible' : 'invisible'
+							}`}
+					>
+						{errors.lastName?.type === 'required' && (
+							<p className="text-xs absolute text-red-500">
+								Last Name Name is required
+							</p>
+						)}
+						{errors.lastName?.type === 'maxLength' && (
+							<p className="text-xs absolute text-red-500">
+								You must enter the required digits
+							</p>
+						)}
+					</div>
 					</div>
 				</div>
 				<br />
