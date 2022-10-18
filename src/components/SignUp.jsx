@@ -1,27 +1,32 @@
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import '../styles/styles.css';
 
 const SignUp = () => {
+
+	const params = useParams()
+	console.log(params)
+
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
 		reset,
-		watch, 
+		watch,
 		formState: { errors },
 	} = useForm()
 
-	const onSubmit = data => {
-		console.log(data)
-
-		reset()
+	const onSubmit = (data) => {
+		console.log(data);
+		reset(console.log(navigate('/login')))
 	}
+	
 
 	const [showPwd, setShowPwd] = useState(false);
 	const [showPwd2, setShowPwd2] = useState(false);
-
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -56,9 +61,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.firstName ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.firstName ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.firstName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -90,9 +94,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.lastName ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.lastName ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.lastName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -124,9 +127,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.email ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.email ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -166,9 +168,8 @@ const SignUp = () => {
 
 						</div>
 						<div
-							className={`${
-								errors.password ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.password ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -213,9 +214,8 @@ const SignUp = () => {
 
 						</div>
 						<div
-							className={`${
-								errors.password2 ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.password2 ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.password2?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -254,11 +254,10 @@ const SignUp = () => {
 					</div>
 
 					<div
-						className={`${
-							Object.keys(errors).length > 0
-								? 'visible'
-								: 'invisible'
-						}`}
+						className={`${Object.keys(errors).length > 0
+							? 'visible'
+							: 'invisible'
+							}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
