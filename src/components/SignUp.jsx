@@ -214,7 +214,7 @@ const SignUp = () => {
 						</div>
 						<div
 							className={`${
-								errors.password ? 'visible' : 'invisible'
+								errors.password2 ? 'visible' : 'invisible'
 							}`}
 						>
 							{errors.password2?.type === 'required' && (
