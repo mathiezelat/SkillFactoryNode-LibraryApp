@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import '../styles/styles.css';
 
 const LogIn = () => {
 	const {
@@ -14,6 +17,9 @@ const LogIn = () => {
 
 		reset()
 	}
+	const [showPwd, setShowPwd] = useState(false);
+
+
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -40,6 +46,7 @@ const LogIn = () => {
 						<input
 							id="email"
 							type="email"
+							placeholder="john@example.com"
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('email', {
 								required: true,
@@ -47,9 +54,8 @@ const LogIn = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.email ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.email ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -64,25 +70,34 @@ const LogIn = () => {
 						</div>
 					</div>
 					<div className="flex flex-col">
+
 						<label
 							htmlFor="password"
 							className="block text-sm font-medium text-gray-700"
 						>
 							Password
 						</label>
-						<input
-							id="password"
-							type="password"
-							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-							{...register('password', {
-								required: true,
-								minLength: 8,
-							})}
-						/>
+						<div className="input-element-wiapper">
+							<input
+								id="password"
+								type={showPwd ? "text" : "password"}
+								placeholder='Enter Password'
+								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+								{...register('password', {
+									autocomplited: false,
+									required: true,
+									minLength: 8,
+								})}
+							/>
+							<div onClick={() => setShowPwd(!showPwd)} className="btn">
+								{showPwd ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							</div>
+
+						</div>
+
 						<div
-							className={`${
-								errors.password ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.password ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -116,11 +131,10 @@ const LogIn = () => {
 					</div>
 
 					<div
-						className={`${
-							Object.keys(errors).length > 0
-								? 'visible'
-								: 'invisible'
-						}`}
+						className={`${Object.keys(errors).length > 0
+							? 'visible'
+							: 'invisible'
+							}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
@@ -133,3 +147,4 @@ const LogIn = () => {
 }
 
 export default LogIn
+

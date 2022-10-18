@@ -111,9 +111,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.title ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.title ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.title?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -138,9 +137,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.author ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.author ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.author?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -165,9 +163,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.published ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.published ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.published?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -192,9 +189,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.isbn ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.isbn ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.isbn?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -221,9 +217,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.img ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.img ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.img?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -253,9 +248,8 @@ const BookForm = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.description ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.description ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.description?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -276,11 +270,10 @@ const BookForm = () => {
 					/>
 
 					<div
-						className={`${
-							Object.keys(errors).length > 0
+						className={`${Object.keys(errors).length > 0
 								? 'visible'
 								: 'invisible'
-						}`}
+							}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
