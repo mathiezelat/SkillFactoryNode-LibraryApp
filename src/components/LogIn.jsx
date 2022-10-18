@@ -20,7 +20,7 @@ const LogIn = () => {
 
 	const onSubmit = (data) => {
 		console.log(data)
-		reset(console.log(navigate('/signup')))
+		reset(console.log(navigate('/books')))
 	}
 	const [showPwd, setShowPwd] = useState(false);
 
