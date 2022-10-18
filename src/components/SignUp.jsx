@@ -27,9 +27,11 @@ const SignUp = () => {
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div className="py-6 px-4 sm:px-0 text-center">
 				<h3 className="text-3xl font-medium leading-6 text-gray-900">
-					Sign Up
+					Sign up
 				</h3>
-
+				<p className="mt-1 text-lg text-gray-600">
+					Sign up to your favorite page ;)
+				</p>
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
@@ -37,69 +39,64 @@ const SignUp = () => {
 			>
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col">
-
 						<label
 							htmlFor="text"
 							className="block text-sm font-medium text-gray-700"
 						>
-							First Name
+							First name
 						</label>
 						<input
 							id="firstName"
 							type="text"
 							placeholder='John'
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-							{...register("firstName", {
+							{...register('firstName', {
 								required: true,
 								maxLength: 10,
 							})}
 						/>
-					</div>
-
-					<div
-						className={`${errors.firstName ? 'visible' : 'invisible'
+						<div
+							className={`${
+								errors.firstName ? 'visible' : 'invisible'
 							}`}
-					>
-						{errors.firstName?.type === 'required' && (
-							<p className="text-xs absolute text-red-500">
-								First Name is required
-							</p>
-						)}
-						{errors.firstName?.type === 'maxLength' && (
-							<p className="text-xs absolute text-red-500">
-								You must enter the required digits
-							</p>
-						)}
+						>
+							{errors.firstName?.type === 'required' && (
+								<p className="text-xs absolute text-red-500">
+									First name is required
+								</p>
+							)}
+							{errors.firstName?.type === 'maxLength' && (
+								<p className="text-xs absolute text-red-500">
+									You must enter the required digits
+								</p>
+							)}
+						</div>
 					</div>
-				</div>
-				<br />
-				<div className="flex flex-col gap-4">
-
 					<div className="flex flex-col">
-
 						<label
 							htmlFor="text"
 							className="block text-sm font-medium text-gray-700"
 						>
-							Last Name
+							Last name
 						</label>
 						<input
 							id="lastName"
 							type="text"
 							placeholder='Doe'
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-							{...register("lastName", {
+							{...register('lastName', {
 								required: true,
 								maxLength: 10,
 							})}
 						/>
 						<div
-							className={`${errors.lastName ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.lastName ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.lastName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
-									Last Name Name is required
+									Last name is required
 								</p>
 							)}
 							{errors.lastName?.type === 'maxLength' && (
@@ -109,11 +106,6 @@ const SignUp = () => {
 							)}
 						</div>
 					</div>
-				</div>
-				<br />
-
-				<div className="flex flex-col gap-4">
-
 					<div className="flex flex-col">
 						<label
 							htmlFor="email"
@@ -132,8 +124,9 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${errors.email ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.email ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -147,7 +140,6 @@ const SignUp = () => {
 							)}
 						</div>
 					</div>
-					<br />
 					<div className="flex flex-col">
 						<label
 							htmlFor="password"
@@ -174,8 +166,9 @@ const SignUp = () => {
 
 						</div>
 						<div
-							className={`${errors.password ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.password ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -189,7 +182,6 @@ const SignUp = () => {
 							)}
 						</div>
 					</div>
-					<br />
 					<div className="flex flex-col">
 						<label
 							htmlFor="password2"
@@ -221,8 +213,9 @@ const SignUp = () => {
 
 						</div>
 						<div
-							className={`${errors.password2 ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.password ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.password2?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -243,31 +236,29 @@ const SignUp = () => {
 					</div>
 
 					<input
-						to="/login"
 						type="submit"
-						value="Sign Up"
+						value="Sign up"
 						className="cursor-pointer self-center inline-flex justify-center rounded-lg border border-transparent bg-blue-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:blue-indigo-500 focus:ring-offset-2"
 					/>
 
-
-
 					<div className="flex justify-center items-center gap-1">
 						<p className="text-sm text-gray-700">
-							Do you have an account?
+							Have an account?
 						</p>
 						<Link
 							to="/login"
 							className="text-sm text-blue-500 hover:text-blue-400"
 						>
-							Log In
+							Log in
 						</Link>
 					</div>
 
 					<div
-						className={`${Object.keys(errors).length > 0
-							? 'visible'
-							: 'invisible'
-							}`}
+						className={`${
+							Object.keys(errors).length > 0
+								? 'visible'
+								: 'invisible'
+						}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
@@ -280,4 +271,3 @@ const SignUp = () => {
 }
 
 export default SignUp
-

@@ -38,7 +38,7 @@ Optionals
 ### Clone project with GitHub
  
 ```sh
-git clone https://github.com/mathiezelat/SkillFactoryReact-TrabajoPractico-N2.git
+git clone https://github.com/mathiezelat/SkillFactoryReact-LibraryApp.git
 ```
 
 ### Project
