@@ -1,15 +1,13 @@
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useState } from 'react';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import '../styles/styles.css';
+import { useState } from 'react'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const SignUp = () => {
-
 	const params = useParams()
 	console.log(params)
 
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -19,14 +17,13 @@ const SignUp = () => {
 		formState: { errors },
 	} = useForm()
 
-	const onSubmit = (data) => {
-		console.log(data);
+	const onSubmit = data => {
+		console.log(data)
 		reset(console.log(navigate('/login')))
 	}
-	
 
-	const [showPwd, setShowPwd] = useState(false);
-	const [showPwd2, setShowPwd2] = useState(false);
+	const [showPwd, setShowPwd] = useState(false)
+	const [showPwd2, setShowPwd2] = useState(false)
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -53,7 +50,7 @@ const SignUp = () => {
 						<input
 							id="firstName"
 							type="text"
-							placeholder='John'
+							placeholder="John"
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('firstName', {
 								required: true,
@@ -61,8 +58,9 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${errors.firstName ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.firstName ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.firstName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -86,7 +84,7 @@ const SignUp = () => {
 						<input
 							id="lastName"
 							type="text"
-							placeholder='Doe'
+							placeholder="Doe"
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('lastName', {
 								required: true,
@@ -94,8 +92,9 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${errors.lastName ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.lastName ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.lastName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -127,8 +126,9 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${errors.email ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.email ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -149,11 +149,11 @@ const SignUp = () => {
 						>
 							Password
 						</label>
-						<div className="input-element-wiapper">
+						<div className="flex justify-end items-center relative">
 							<input
 								id="password"
-								type={showPwd ? "text" : "password"}
-								placeholder='Enter Password'
+								type={showPwd ? 'text' : 'password'}
+								placeholder="Enter Password"
 								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 								{...register('password', {
 									autocomplited: false,
@@ -162,14 +162,21 @@ const SignUp = () => {
 								})}
 							/>
 
-							<div onClick={() => setShowPwd(!showPwd)} className="btn">
-								{showPwd ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							<div
+								onClick={() => setShowPwd(!showPwd)}
+								className="mt-1 absolute text-xl text-gray-500 p-3"
+							>
+								{showPwd ? (
+									<AiOutlineEyeInvisible />
+								) : (
+									<AiOutlineEye />
+								)}
 							</div>
-
 						</div>
 						<div
-							className={`${errors.password ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.password ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -188,13 +195,13 @@ const SignUp = () => {
 							htmlFor="password2"
 							className="block text-sm font-medium text-gray-700"
 						>
-							Confirm Password
+							Confirm password
 						</label>
-						<div className="input-element-wiapper">
+						<div className="flex justify-end items-center relative">
 							<input
 								id="password2"
-								type={showPwd2 ? "text" : "password"}
-								placeholder='Confirm Password'
+								type={showPwd2 ? 'text' : 'password'}
+								placeholder="Confirm Password"
 								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 								{...register('password2', {
 									autocomplited: false,
@@ -208,23 +215,31 @@ const SignUp = () => {
 								})}
 							/>
 
-							<div onClick={() => setShowPwd2(!showPwd2)} className="btn2">
-								{showPwd2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							<div
+								onClick={() => setShowPwd2(!showPwd2)}
+								className="mt-1 absolute text-xl text-gray-500 p-3"
+							>
+								{showPwd2 ? (
+									<AiOutlineEyeInvisible />
+								) : (
+									<AiOutlineEye />
+								)}
 							</div>
-
 						</div>
 						<div
-							className={`${errors.password2 ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.password2 ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.password2?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
-									Confirm Password is required
+									Confirm password is required
 								</p>
 							)}
 							{errors.password2?.type === 'minLength' && (
 								<p className="text-xs absolute text-red-500">
-									Password must contain more than 8 digits
+									Confirm psassword must contain more than 8
+									digits
 								</p>
 							)}
 							{errors.password2?.type === 'validate' && (
@@ -254,10 +269,11 @@ const SignUp = () => {
 					</div>
 
 					<div
-						className={`${Object.keys(errors).length > 0
-							? 'visible'
-							: 'invisible'
-							}`}
+						className={`${
+							Object.keys(errors).length > 0
+								? 'visible'
+								: 'invisible'
+						}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.

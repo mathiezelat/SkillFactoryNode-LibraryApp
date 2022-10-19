@@ -1,15 +1,13 @@
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useState } from 'react';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import '../styles/styles.css';
+import { useState } from 'react'
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const LogIn = () => {
-
 	const params = useParams()
 	console.log(params)
 
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
 	const {
 		register,
@@ -18,13 +16,11 @@ const LogIn = () => {
 		formState: { errors },
 	} = useForm()
 
-	const onSubmit = (data) => {
+	const onSubmit = data => {
 		console.log(data)
 		reset(console.log(navigate('/books')))
 	}
-	const [showPwd, setShowPwd] = useState(false);
-
-
+	const [showPwd, setShowPwd] = useState(false)
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -59,8 +55,9 @@ const LogIn = () => {
 							})}
 						/>
 						<div
-							className={`${errors.email ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.email ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -75,18 +72,17 @@ const LogIn = () => {
 						</div>
 					</div>
 					<div className="flex flex-col">
-
 						<label
 							htmlFor="password"
 							className="block text-sm font-medium text-gray-700"
 						>
 							Password
 						</label>
-						<div className="input-element-wiapper">
+						<div className="flex justify-end items-center relative">
 							<input
 								id="password"
-								type={showPwd ? "text" : "password"}
-								placeholder='Enter Password'
+								type={showPwd ? 'text' : 'password'}
+								placeholder="Enter Password"
 								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 								{...register('password', {
 									autocomplited: false,
@@ -94,15 +90,22 @@ const LogIn = () => {
 									minLength: 8,
 								})}
 							/>
-							<div onClick={() => setShowPwd(!showPwd)} className="btn">
-								{showPwd ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							<div
+								onClick={() => setShowPwd(!showPwd)}
+								className="mt-1 absolute text-xl text-gray-500 p-3"
+							>
+								{showPwd ? (
+									<AiOutlineEyeInvisible />
+								) : (
+									<AiOutlineEye />
+								)}
 							</div>
-
 						</div>
 
 						<div
-							className={`${errors.password ? 'visible' : 'invisible'
-								}`}
+							className={`${
+								errors.password ? 'visible' : 'invisible'
+							}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -117,15 +120,11 @@ const LogIn = () => {
 						</div>
 					</div>
 
-
 					<input
-
 						type="submit"
 						value="Log in"
 						className="cursor-pointer self-center inline-flex justify-center rounded-lg border border-transparent bg-blue-600 py-2 px-4 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:blue-indigo-500 focus:ring-offset-2"
-
 					/>
-
 
 					<div className="flex justify-center items-center gap-1">
 						<p className="text-sm text-gray-700">
@@ -140,10 +139,11 @@ const LogIn = () => {
 					</div>
 
 					<div
-						className={`${Object.keys(errors).length > 0
-							? 'visible'
-							: 'invisible'
-							}`}
+						className={`${
+							Object.keys(errors).length > 0
+								? 'visible'
+								: 'invisible'
+						}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
@@ -156,4 +156,3 @@ const LogIn = () => {
 }
 
 export default LogIn
-
