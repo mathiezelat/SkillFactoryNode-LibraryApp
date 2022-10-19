@@ -1,12 +1,9 @@
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
 const LogIn = () => {
-	const params = useParams()
-	console.log(params)
-
 	const navigate = useNavigate()
 
 	const {
@@ -18,7 +15,10 @@ const LogIn = () => {
 
 	const onSubmit = data => {
 		console.log(data)
-		reset(console.log(navigate('/books')))
+
+		reset()
+
+		navigate('/books')
 	}
 	const [showPwd, setShowPwd] = useState(false)
 
