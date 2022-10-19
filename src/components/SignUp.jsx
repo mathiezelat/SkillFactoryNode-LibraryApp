@@ -1,19 +1,32 @@
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import '../styles/styles.css';
 
 const SignUp = () => {
+
+	const params = useParams()
+	console.log(params)
+
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
 		reset,
+		watch,
 		formState: { errors },
 	} = useForm()
 
-	const onSubmit = data => {
-		console.log(data)
-
-		reset()
+	const onSubmit = (data) => {
+		console.log(data);
+		reset(console.log(navigate('/login')))
 	}
+	
+
+	const [showPwd, setShowPwd] = useState(false);
+	const [showPwd2, setShowPwd2] = useState(false);
 
 	return (
 		<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -40,6 +53,7 @@ const SignUp = () => {
 						<input
 							id="firstName"
 							type="text"
+							placeholder='John'
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('firstName', {
 								required: true,
@@ -47,9 +61,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.firstName ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.firstName ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.firstName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -73,6 +86,7 @@ const SignUp = () => {
 						<input
 							id="lastName"
 							type="text"
+							placeholder='Doe'
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('lastName', {
 								required: true,
@@ -80,9 +94,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.lastName ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.lastName ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.lastName?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -106,6 +119,7 @@ const SignUp = () => {
 						<input
 							id="email"
 							type="email"
+							placeholder="john@example.com"
 							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
 							{...register('email', {
 								required: true,
@@ -113,9 +127,8 @@ const SignUp = () => {
 							})}
 						/>
 						<div
-							className={`${
-								errors.email ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.email ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.email?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -136,19 +149,27 @@ const SignUp = () => {
 						>
 							Password
 						</label>
-						<input
-							id="password"
-							type="password"
-							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-							{...register('password', {
-								required: true,
-								minLength: 8,
-							})}
-						/>
+						<div className="input-element-wiapper">
+							<input
+								id="password"
+								type={showPwd ? "text" : "password"}
+								placeholder='Enter Password'
+								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+								{...register('password', {
+									autocomplited: false,
+									required: true,
+									minLength: 8,
+								})}
+							/>
+
+							<div onClick={() => setShowPwd(!showPwd)} className="btn">
+								{showPwd ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							</div>
+
+						</div>
 						<div
-							className={`${
-								errors.password ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.password ? 'visible' : 'invisible'
+								}`}
 						>
 							{errors.password?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
@@ -164,33 +185,51 @@ const SignUp = () => {
 					</div>
 					<div className="flex flex-col">
 						<label
-							htmlFor="password"
+							htmlFor="password2"
 							className="block text-sm font-medium text-gray-700"
 						>
 							Confirm Password
 						</label>
-						<input
-							id="password"
-							type="password"
-							className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-							{...register('password', {
-								required: true,
-								minLength: 8,
-							})}
-						/>
+						<div className="input-element-wiapper">
+							<input
+								id="password2"
+								type={showPwd2 ? "text" : "password"}
+								placeholder='Confirm Password'
+								className="mt-1 block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+								{...register('password2', {
+									autocomplited: false,
+									required: true,
+									minLength: 8,
+									validate: value => {
+										if (watch('password') !== value) {
+											return 'Password do not match'
+										}
+									},
+								})}
+							/>
+
+							<div onClick={() => setShowPwd2(!showPwd2)} className="btn2">
+								{showPwd2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+							</div>
+
+						</div>
 						<div
-							className={`${
-								errors.password ? 'visible' : 'invisible'
-							}`}
+							className={`${errors.password2 ? 'visible' : 'invisible'
+								}`}
 						>
-							{errors.password?.type === 'required' && (
+							{errors.password2?.type === 'required' && (
 								<p className="text-xs absolute text-red-500">
-									Password is required
+									Confirm Password is required
 								</p>
 							)}
-							{errors.password?.type === 'minLength' && (
+							{errors.password2?.type === 'minLength' && (
 								<p className="text-xs absolute text-red-500">
 									Password must contain more than 8 digits
+								</p>
+							)}
+							{errors.password2?.type === 'validate' && (
+								<p className="text-xs absolute text-red-500">
+									Password do not match
 								</p>
 							)}
 						</div>
@@ -215,11 +254,10 @@ const SignUp = () => {
 					</div>
 
 					<div
-						className={`${
-							Object.keys(errors).length > 0
-								? 'visible'
-								: 'invisible'
-						}`}
+						className={`${Object.keys(errors).length > 0
+							? 'visible'
+							: 'invisible'
+							}`}
 					>
 						<p className="text-sm text-center text-red-500">
 							There are errors, check form.
