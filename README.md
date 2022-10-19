@@ -1,55 +1,83 @@
-# Skill Factory React - Trabajo Práctico 3
-
-## Team
+# SkillFactory React - CheckPoint#3
+### Team
 - Mathías Ezequiel Latrónico
 - Rolando Duarte
 - Emmanuel Enrique Mombelli
 - Tomás Napolitano
 
-## Tasks
-- You will need to create a new React project using the CRA CLI.
-- The application must allow:
-    - Add a book
-    - Delete a book
-    - Updating a book
-    - Retrieve information from loaded books
-- You will need Redux Toolkit for the state management of the application.
-- This application will be the first one that, in a mandatory way, you will make with Responsive Design.
-- You will be able to use the style libraries you like as well as all the libraries that you consider that add value to the product. to the product.
-- For each book, maintain the consistency of the chosen language (ES/EN). 
-(ES/EN) and must contain:
-    - Title
-    - Author(s) 
-    - Year of publication
-    - An image for the cover
-    - A description or outline of the content
-    - ISBN (If available) - Optional
-- We are working with the best coding standards so we need everything to be written with the best so we need everything to be written with the implementations of ECMA6 and later of ECMA6 and later (functions, destructuring, among others).
-- Design the mockup of the UI for Login & Register. Add these options to the options to the navbar or menu, depending on the style you choose.
-- As an innovation, all teams will implement the SCRUM methodology.
+### Photo
+![img](https://i.ibb.co/f8dF3gz/Skillers.png)
 
-Optionals
+# Introduction
+### LibraryApp - Taks
+It is an App based on a library of books, where the user will save the information of those books that he visits.
 
-- Use a Call To Action that makes a request to an API and loads books in our books into our application.
-- Ideally, it would be very optimal if the addition of books and the updating of books were updating of books should ideally be done in different routes.
+![img](https://i.ibb.co/fHG1CMv/App.png)
+# Requeriments
+- Create a React project using the CRA CLI.
+- Perform a CRUD that allows:
+    - Add a book.
+    - Delete a book.
+    - Update a book.
+    - Retrive information from loaded books.
+- Use Redux Toolkit for App state management.
+- It should be Responsive Design.
+- Use library of styles for the contribution of the product.
+- Each book must maintain the consistency of the selected language (ES/EN) and contain:
+    - Title.
+    - Author(s).
+    - Year of publication.
+    - An image for the cover.
+    - A descriptión.
+    - ISBN (If available).
+- Use the ECMA6 coding standard.
+- Desing the UI Mockup for Login and Register.
 
-## Commands
-
-### Clone project with GitHub
- 
-```sh
-git clone https://github.com/mathiezelat/SkillFactoryReact-LibraryApp.git
+###### Agile Methodology **SCRUM**
+Archieve the organization to carry out the product and comply with:
+- Dailies.
+- Sprint Planning.
+- Team Leader (internal).
+- Product Backlog.
+- Sprint Review.
+- Demo.
+ ##### Way of working **Trello**
+Each member of the team had to complete the Sprint to carry out the management of the Product Backlog, in this way the members worked on the functionalities of the App and others on the user interface.
+![img](https://i.ibb.co/HGYySys/Trello.png)
+# Project Creation
+- We created a remote repository on **GitHub**.
+- Create the application in React:
+    ```
+    npx create-react-app SkillFactoryReact-LibraryApp
+    ```
+- The install the following:
+    - React Redux:
+    ```
+    npm install react-redux
+    ```
+    - Redux Toolkit:
+    ```
+    npm install @reduxjs/toolkit
+    ```
+    - React Dom 6:
+    ```
+    npm install react-router-dom@6
+    ```
+    - uuidv4:
+    ```
+    npm install uuid
+    ```
+- Then each member made a fork of the repository.
+### Clone the App.
+**Create a folder**, you can designate the name you like.
+- Go to GitHub and get the URL by running the following command in a **CMD** console:
 ```
-
-### Project
-
-In the project directory, you can execute:
-### `npm install`
-
-Installs all project dependencies.
-
-### `npm run dev`
-
-Run the application in development mode.
-
-Open http://localhost:5173 to view in the browser.
+git clone https://github.com/emma-25/SkillFactoryReact-LibraryApp.git
+```
+- Once the repository is cloned with the command `cd SkillFactoryReact-LibraryApp`, plus the name of the folder we place ourselves in the project.
+- Open a terminal in **VSCode** and run the following command `npm install o npm i` to install the dependencies you will need for your project.
+# Start the App
+In the terminal of your editor execute `npm start` to be able to visualize it in the browser, by default it will open in the following port `https://localhost:3000`.
+### Optional
+- Use a Call To Action to request an API and load the books in our App.
+- The addition and update of books that are carried out in different routes.
