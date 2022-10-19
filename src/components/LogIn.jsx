@@ -92,7 +92,7 @@ const LogIn = () => {
 							/>
 							<div
 								onClick={() => setShowPwd(!showPwd)}
-								className="mt-1 absolute text-xl text-gray-500 p-3"
+								className="mt-1 absolute text-xl text-gray-500 p-3 cursor-pointer"
 							>
 								{showPwd ? (
 									<AiOutlineEyeInvisible />
