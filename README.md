@@ -72,7 +72,7 @@ Each member of the team had to complete the Sprint to carry out the management o
 **Create a folder**, you can designate the name you like.
 - Go to GitHub and get the URL by running the following command in a **CMD** console:
 ```
-git clone https://github.com/emma-25/SkillFactoryReact-LibraryApp.git
+git clone https://github.com/mathiezelat/SkillFactoryReact-LibraryApp.git
 ```
 - Once the repository is cloned with the command `cd SkillFactoryReact-LibraryApp`, plus the name of the folder we place ourselves in the project.
 - Open a terminal in **VSCode** and run the following command `npm install o npm i` to install the dependencies you will need for your project.
